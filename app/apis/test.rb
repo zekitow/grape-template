@@ -1,4 +1,4 @@
-module API
+module APIs
   class Test < Grape::API
 
     resource :test do

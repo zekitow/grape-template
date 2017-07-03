@@ -1,8 +1,8 @@
-module API
+module APIs
   class App < Grape::API
     format :json
     prefix :api
 
-    mount API::Test
+    mount APIs::Test
   end
 end
