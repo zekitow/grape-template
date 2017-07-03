@@ -12,4 +12,6 @@ end
 group :test do
   gem 'rack-test'
   gem 'rspec'
+  gem 'rspec-collection_matchers'
+  gem 'database_cleaner'
 end

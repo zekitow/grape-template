@@ -3,6 +3,6 @@ module APIs
     format :json
     prefix :api
 
-    mount APIs::Users
+    mount APIs::Todos
   end
 end

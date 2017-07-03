@@ -13,4 +13,9 @@ module RSpecMixin
   include Rack::Test::Methods
 end
 
-RSpec.configure { |c| c.include RSpecMixin }
+RSpec.configure do |c| 
+  c.include RSpecMixin
+  c.after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+end
