@@ -49,11 +49,11 @@ And go to *http://localhost:3000/*
 
 I've added rspec for testing. So, you have to run the migration at RACK_ENV=test
 
-        RACK_ENV=test rake db:create db:migrate
-        
+      RACK_ENV=test rake db:create db:migrate
+
 ### Run the tests
 
-        rspec
+      rspec
 
 Then you should see something like:
 
