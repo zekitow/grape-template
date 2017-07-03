@@ -13,9 +13,9 @@ module RSpecMixin
   include Rack::Test::Methods
 end
 
-RSpec.configure do |c| 
-  c.include RSpecMixin
-  c.after(:all) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
+RSpec.configure do | config | 
+  config.formatter =  :documentation
+  config.include RSpecMixin
+  config.after(:all) { DatabaseCleaner.clean_with(:truncation) }
+  ActiveRecord::Base.logger = Logger.new(nil)
 end
