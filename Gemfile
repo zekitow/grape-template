@@ -14,4 +14,5 @@ group :test do
   gem 'rspec'
   gem 'rspec-collection_matchers'
   gem 'database_cleaner'
+  gem 'factory_girl', '~> 4.0'
 end

@@ -11,7 +11,7 @@ describe APIs::Todos do
     end
 
     context 'when have todos' do
-      before(:all) { Todo.create!(task: 'Something to get done.') }
+      before(:all) { create(:todo) }
 
       it { expect(subject.status).to eql(200) }
       it { expect(JSON.parse(subject.body)).to have_exactly(1).items }
