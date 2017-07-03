@@ -4,7 +4,7 @@ module APIs
     resource :test do
 
       get '/' do
-        { hello: 'world' }
+        User.all
       end
 
     end
