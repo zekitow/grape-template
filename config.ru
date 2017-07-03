@@ -1,6 +1,6 @@
 $:.unshift File.expand_path '..', __FILE__
 
-require './app/env'
+require './config/env'
 require './app/app'
 
 run APIs::App
