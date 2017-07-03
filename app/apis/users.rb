@@ -1,7 +1,7 @@
 module APIs
-  class Test < Grape::API
+  class Users < Grape::API
 
-    resource :test do
+    resource :users do
 
       get '/' do
         User.all
