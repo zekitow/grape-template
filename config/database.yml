@@ -1,0 +1,20 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: grape_development
+  username: root
+  password: root@123
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: grape_test
+  username: root
+  password: root@123
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: grape_production
+  username: root
+  password: root@123
