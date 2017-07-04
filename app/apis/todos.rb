@@ -7,7 +7,7 @@ module APIs
         Todo.all
       end
 
-      desc 'Created a new TO DO'
+      desc 'Create a new TO DO'
       params do
         requires :task, type: String, desc: "Task name"
         optional :done, type: Boolean, desc: "The task status (done or not done)"
@@ -16,7 +16,17 @@ module APIs
         Todo.create(params)
       end
    
-    end
+      desc 'Update a TO DO'
+      params do
+        requires :id, type: Integer, desc: "Todo identifier"
+        requires :task, type: String, desc: "Task name"
+        optional :done, type: Boolean, desc: "The task status (done or not done)"
+      end
+      put '/:id' do 
+        # Todo.create(params)
+      end
 
+
+    end
   end
 end

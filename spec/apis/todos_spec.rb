@@ -2,7 +2,7 @@ require './spec/spec_helper'
 
 describe APIs::Todos do
 
-  context 'GET /api/todos' do
+  context 'Retrive all TO-DOs' do
     subject { get '/api/todos' }
 
     context 'when do not have todos' do
@@ -19,7 +19,7 @@ describe APIs::Todos do
 
   end
 
-  context 'POST /api/todos' do
+  context 'Create new TO-DO' do
     subject { post '/api/todos', params }
 
     context 'when params are invalid' do
@@ -38,6 +38,15 @@ describe APIs::Todos do
       it { expect(JSON.parse(subject.body)).to have_key('created_at') }
       it { expect(JSON.parse(subject.body)).to have_key('updated_at') }
     end
+  end
 
+  context 'Update a TO-DO' do
+    subject { put '/api/todo/*id', params }
+
+    context 'when params are invalid' do
+      let(:id) { nil }
+      let(:params) { { } }
+      it { expect(subject.status).to eql(400) }
+    end
   end
 end
