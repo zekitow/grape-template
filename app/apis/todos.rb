@@ -1,6 +1,5 @@
 module APIs
   class Todos < Grape::API
-    # includes params helpers
     helpers APIs::Params::Todos
 
     resource :todos do
@@ -29,8 +28,7 @@ module APIs
           done: params[:done]
         })
 
-        status 204
-        nil
+        render_no_content!
       end
 
     end

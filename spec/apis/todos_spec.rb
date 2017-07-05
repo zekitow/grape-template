@@ -80,7 +80,7 @@ describe APIs::Todos do
       before { create(:todo, id: 1, task: 'Something undone', done: false) }
 
       it { expect(subject.status).to eql(204) }
-      it { expect(subject.body).to be_empty }
+      it { expect(subject.body).to be_empty   }
     end
   end
 end

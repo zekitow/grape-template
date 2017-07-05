@@ -8,5 +8,5 @@ OTR::ActiveRecord.configure_from_file! "./config/database.yml"
 
 # Load application
 Dir.glob('./app/apis/{params}/*.rb').each { |file| require file }
-Dir.glob('./app/{models,apis}/*.rb').each { |file| require file }
+Dir.glob('./app/{helpers,models,apis}/*.rb').each { |file| require file }
 Dir.glob('./app/app.rb').each { |file| require file }
