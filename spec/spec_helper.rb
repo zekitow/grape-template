@@ -16,15 +16,25 @@ end
 RSpec.configure do | config | 
   config.include RSpecMixin
 
-  # logging and database configs
-  config.after(:all) { DatabaseCleaner.clean_with(:truncation) }
+  # logging
   ActiveRecord::Base.logger = Logger.new(nil)
 
-  # FactoryGirl configs
+  # FactoryGirl configs and database cleaner
   config.include FactoryGirl::Syntax::Methods
   config.before(:suite) do
     FactoryGirl.find_definitions
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 
   # Rspec output config
   config.formatter =  :documentation

@@ -16,7 +16,12 @@ module APIs
       post '/' do
         Todo.create(params)
       end
-   
+
+      desc 'Retrives one specific TO DO'
+      get ':id' do
+        Todo.find(params[:id])
+      end
+
     end
 
   end

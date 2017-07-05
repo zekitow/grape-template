@@ -11,7 +11,7 @@ describe APIs::Todos do
     end
 
     context 'when have todos' do
-      before(:all) { create(:todo) }
+      before { create(:todo) }
 
       it { expect(subject.status).to eql(200) }
       it { expect(JSON.parse(subject.body)).to have_exactly(1).items }
@@ -32,6 +32,27 @@ describe APIs::Todos do
       let(:params) { { task: 'Just another task' } }
 
       it { expect(subject.status).to eql(201)                         }
+      it { expect(JSON.parse(subject.body)).to have_key('id')         }
+      it { expect(JSON.parse(subject.body)).to have_key('task')       }
+      it { expect(JSON.parse(subject.body)).to have_key('done')       }
+      it { expect(JSON.parse(subject.body)).to have_key('created_at') }
+      it { expect(JSON.parse(subject.body)).to have_key('updated_at') }
+    end
+
+  end
+
+  context 'GET /api/todos/:id' do
+    subject { get "/api/todos/1" }
+
+    context 'when todo is not found' do
+      it { expect(subject.status).to eql(404) }
+      it { expect(subject.body).to be_empty   }
+    end
+
+    context 'when todo is found' do
+      before { create(:todo, id: 1) }
+
+      it { expect(subject.status).to eql(200) }
       it { expect(JSON.parse(subject.body)).to have_key('id')         }
       it { expect(JSON.parse(subject.body)).to have_key('task')       }
       it { expect(JSON.parse(subject.body)).to have_key('done')       }
