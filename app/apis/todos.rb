@@ -1,7 +1,9 @@
 module APIs
   class Todos < Grape::API
-    resource :todos do
+    # includes params helpers
+    helpers APIs::Params::Todos
 
+    resource :todos do
       desc 'Retrive all TO DOs'
       get '/' do
         Todo.all
@@ -9,10 +11,9 @@ module APIs
 
       desc 'Created a new TO DO'
       params do
-        requires :task, type: String, desc: "Task name"
-        optional :done, type: Boolean, desc: "The task status (done or not done)"
+        use :create_params
       end
-      post '/' do 
+      post '/' do
         Todo.create(params)
       end
    
