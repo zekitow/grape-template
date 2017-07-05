@@ -16,19 +16,22 @@ module APIs
         Todo.create(params)
       end
 
-      desc 'Retrives one specific TO DO'
-      get ':id' do
-        Todo.find(params[:id])
-      end
+      route_param :id do
+        desc 'Retrives one specific TO DO'
+        get do
+          Todo.find(params[:id])
+        end
 
-      desc 'Updates on specific TO DO'
-      put ':id' do
-        Todo.find(params[:id]).update!({
-          task: params[:task],
-          done: params[:done]
-        })
+        desc 'Updates on specific TO DO'
+        put do
 
-        render_no_content!
+          Todo.find(params[:id]).update!({
+            task: params[:task],
+            done: params[:done]
+          })
+
+          render_no_content!
+        end
       end
 
     end
