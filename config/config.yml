@@ -1,0 +1,13 @@
+defaults: &defaults
+  api:
+    username: 'secret'
+    password: 'secret'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
