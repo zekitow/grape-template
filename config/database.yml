@@ -2,19 +2,19 @@ development:
   adapter: mysql2
   encoding: utf8
   database: grape_development
-  username: root
-  password: root@123
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
 
 test:
   adapter: mysql2
   encoding: utf8
   database: grape_test
-  username: root
-  password: root@123
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
 
 production:
   adapter: mysql2
   encoding: utf8
   database: grape_production
-  username: root
-  password: root@123
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
