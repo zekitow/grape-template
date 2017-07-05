@@ -22,7 +22,7 @@ module APIs
           Todo.find(params[:id])
         end
 
-        desc 'Updates on specific TO DO'
+        desc 'Updates one specific TO DO'
         put do
 
           Todo.find(params[:id]).update!({
@@ -30,6 +30,12 @@ module APIs
             done: params[:done]
           })
 
+          render_no_content!
+        end
+
+        desc 'Removes one specific TO DO'
+        delete do
+          Todo.find(params[:id]).destroy
           render_no_content!
         end
       end

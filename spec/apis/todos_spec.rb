@@ -83,4 +83,20 @@ describe APIs::Todos do
       it { expect(subject.body).to be_empty   }
     end
   end
+
+  context 'DELETE /api/todos/:id' do
+    subject { delete "/api/todos/1" }
+
+    context 'when todo is not found' do
+      it { expect(subject.status).to eql(404) }
+      it { expect(subject.body).to be_empty   }
+    end
+
+    context 'when todo is found' do
+      before { create(:todo, id: 1) }
+
+      it { expect(subject.status).to eql(204) }
+      it { expect(subject.body).to be_empty   }
+    end
+  end
 end
