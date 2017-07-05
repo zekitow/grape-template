@@ -59,6 +59,28 @@ describe APIs::Todos do
       it { expect(JSON.parse(subject.body)).to have_key('created_at') }
       it { expect(JSON.parse(subject.body)).to have_key('updated_at') }
     end
+  end
 
+  context 'PUT /api/todos/:id' do
+    subject { put "/api/todos/1", params }
+
+    let!(:params) do
+      { 
+        task: 'Something done',
+        done: true
+      }
+    end
+
+    context 'when todo is not found' do
+      it { expect(subject.status).to eql(404) }
+      it { expect(subject.body).to be_empty   }
+    end
+
+    context 'when todo is found' do
+      before { create(:todo, id: 1, task: 'Something undone', done: false) }
+
+      it { expect(subject.status).to eql(204) }
+      it { expect(subject.body).to be_empty }
+    end
   end
 end

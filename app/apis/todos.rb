@@ -22,6 +22,17 @@ module APIs
         Todo.find(params[:id])
       end
 
+      desc 'Updates on specific TO DO'
+      put ':id' do
+        Todo.find(params[:id]).update!({
+          task: params[:task],
+          done: params[:done]
+        })
+
+        status 204
+        nil
+      end
+
     end
 
   end
