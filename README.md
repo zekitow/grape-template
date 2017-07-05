@@ -36,7 +36,7 @@ Change the *config/database.yml* and sets your username:
 
 ### Migrations
 
-Create a *User* sample:
+Create a *Todo* sample:
 
   ```
   rake db:create db:migrate db:seed
@@ -49,7 +49,7 @@ Create a *User* sample:
   puma -p 3000
   ```
 
-And go to *http://localhost:3000/*
+And go to *http://localhost:3000/api/todos*
 
 ## Tests
 
